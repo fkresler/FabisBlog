@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
 import Bio from '../components/bio';
@@ -7,12 +8,13 @@ import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 const BlogPostTemplate = (props) => {
-  const post = props.data.markdownRemark;
-  const siteTitle = props.data.site.siteMetadata.title;
-  const { previous, next } = props.pageContext;
+  const { data, location, pageContext } = props;
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -62,13 +64,35 @@ const BlogPostTemplate = (props) => {
           <Link to={next.fields.slug} rel="next">
             {next.frontmatter.title}
             {' '}
-→
           </Link>
           )}
         </li>
       </ul>
     </Layout>
   );
+};
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  location: PropTypes.string.isRequired,
+  pageContext: PropTypes.shape({
+    previous: PropTypes.object.isRequired,
+    next: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export default BlogPostTemplate;

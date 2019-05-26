@@ -34,8 +34,8 @@ Of course you can use the setup of ESLint itself to create the rules for you. Bu
 
 ###Sounds cool! Show me how to set it up in Visual Studio Code!###
 
-1. Set up the ESLint plugin in your Visual Studio Code IDE (you will find it probably by just searching for ESLint)
-2. Next we need to install all required dependencies as dev-dependencies in our project
+1. Install the ESLint plugin in your Visual Studio Code IDE (you will find it probably by just searching for ESLint)
+1. Next we need to install all required dependencies as dev-dependencies in our project
     - When you are running an npm version 5+ you can use this command:
     ```bash
     npx install-peerdeps --dev eslint-config-airbnb
@@ -55,7 +55,7 @@ Of course you can use the setup of ESLint itself to create the rules for you. Bu
             "eslint-plugin-react": "^7.13.0"
         }
     ```
-3. Finally we need to set up our configuration file for the project: just create a file called '.eslintrc.json' in the root directory of your project (which is usally the same directory as your package.json file) and enter the following:
+1. Finally we need to set up our configuration file for the project: just create a file called '.eslintrc.json' in the root directory of your project (which is usally the same directory as your package.json file) and enter the following:
     ```json
     {
         "extends": "airbnb"
