@@ -18,17 +18,17 @@ I have heard a mixture of those more or less multiple times throughout my last t
 
 ###What do actually you mean by "linting"?###
 
-Linting is the process of checking your code before you even compile or run it. A linter is therefore a program that supports linting your code. In our case we need to lint Javascript code. There are multiple linters available for that, namely JSLint, JSHint, JSCS and ESLint whereas ESLint is the latest one. As of time the time of wrinting this ESLint has multiple advantages over the others:
+Linting is the process of checking your code before you even compile or run it. A linter is therefore a program that supports linting your code (no way Sherlock). In our case we need to lint Javascript code. There are multiple linters available for that, namely JSLint, JSHint, JSCS and ESLint whereas ESLint is the latest one. As of the time of wrinting ESLint has multiple advantages over the others:
 - It can be vastly configured and even allows tweaking for specific rules
 - It is very extensible and has a plethora of plugins available
 - It has the best ES6 support of all the linters (including JSX)
 
-But there is also a negative aspect to it in that it needs to be configured; and adjusting it to your liking actually takes a ton of time because of the many rules and options it provides.
+But there is also a negative aspect to its configurable and extensible nature in that it actually needs to be configured; and adjusting it to your liking actually takes a ton of time because of the many rules and options it provides.
 
 
 ###But I do not want to configure all those rules ...###
 
-Of course you can use the setup of ESLint itself to create the rules for you. But this still takes a lot of time to understand the rules and set it up at all. And this is when we can use an already existing set of rules in order to lint our project. Like you many businesses that write Javascript code already had the exact same problems and therefore introdcued linting in their projects. There are two famous rule sets as of right now to use: Google and Airbnb.
+Of course you can use the setup of ESLint itself to create the rules for you. But this still takes a lot of time to understand the rules, answer some questions and set it up at all. And this is when we can use an already existing set of rules in order to lint our project. Like you many businesses that write Javascript code already had the exact same problems and therefore introdcued linting in their projects. There are two famous rule sets as of right now to use: Google and Airbnb. We will use Airbnb which is the prefered version over Google and provides a really good foundation for every kind of Javascript project.
 
 <a href="https://eslint.org/docs/rules/" target="_blank">Here is the list with all the available rules, feel free to configure your own!</a>
 
