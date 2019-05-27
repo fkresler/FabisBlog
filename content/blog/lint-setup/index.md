@@ -32,9 +32,12 @@ Of course you can use the setup of ESLint itself to create the rules for you. Bu
 
 <a href="https://eslint.org/docs/rules/" target="_blank">Here is the list with all the available rules, feel free to configure your own!</a>
 
-###Sounds cool! Show me how to set it up in Visual Studio Code!###
+###Oke, you got me! Show me how to set it up in Visual Studio Code!###
 
-1. Install the ESLint plugin in your Visual Studio Code IDE (you will find it probably by just searching for ESLint)
+1. Install the ESLint plugin in your Visual Studio Code (you will find it probably by just searching for ESLint)
+    ![ESLint plugin](./eslint-plugin.png)
+1. Also we need to enable ESLint in Visual Studio Code and enable it to fix our files automatically on saving! (Could it get any better?)
+    ![ESLint settings](./eslint-settings.png)
 1. Next we need to install all required dependencies as dev-dependencies in our project
     - When you are running an npm version 5+ you can use this command:
     ```bash
@@ -61,5 +64,7 @@ Of course you can use the setup of ESLint itself to create the rules for you. Bu
         "extends": "airbnb"
     }
     ```
+
+Linting is the best thing I have ever done to my projects and you should too.
 
 Have fun and happy linting!
