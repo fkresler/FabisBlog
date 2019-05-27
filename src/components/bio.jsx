@@ -46,9 +46,7 @@ function Bio() {
 who lives and works in Germany
               in the rural area with beautiful landscapes.
               </p>
-              <p>
-              Let's see if we can spark some discussions and create some amazing value!
-              </p>
+              <p>#StraightOuttaFranken</p>
             </div>
           </div>
         );
