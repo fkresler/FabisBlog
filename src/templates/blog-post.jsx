@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
@@ -19,6 +20,7 @@ const BlogPostTemplate = (props) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <Image sizes={post.frontmatter.titleImage.childImageSharp.sizes} />
       <h1>
         {post.frontmatter.title}
         {' '}
@@ -74,17 +76,18 @@ const BlogPostTemplate = (props) => {
 
 BlogPostTemplate.propTypes = {
   data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
+        titleImage: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
@@ -113,6 +116,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        titleImage {
+          childImageSharp {
+            sizes(maxWidth: 630) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }

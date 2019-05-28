@@ -2,6 +2,7 @@
 title: Setting up linting in Javascript projects
 date: "2019-05-26T14:00:00.000Z"
 description: How to set up ESLint the easy way!
+titleImage: "./titleImage.png"
 ---
 
 ###Hey guys!###

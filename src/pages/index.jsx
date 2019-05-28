@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Bio from '../components/bio';
@@ -7,16 +8,43 @@ import Layout from '../components/layout';
 import BlogEntryList from '../components/blog-entry-list';
 
 const BlogIndex = (props) => {
-  const { data } = props;
+  const { data, location } = props;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <Bio />
       <BlogEntryList posts={posts} />
     </Layout>
   );
+};
+
+BlogIndex.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          excerpt: PropTypes.string,
+          fields: PropTypes.shape({
+            slug: PropTypes.string,
+          }),
+          frontmatter: PropTypes.shape({
+            date: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            titleImage: PropTypes.string.isRequired,
+          }).isRequired,
+        }),
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+  location: PropTypes.string.isRequired,
 };
 
 export default BlogIndex;
@@ -39,6 +67,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            titleImage {
+              childImageSharp {
+                sizes(maxWidth: 630) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }
