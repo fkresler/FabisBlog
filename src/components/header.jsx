@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
+
+import ToggleOpenCloseButton from './toggle-open-close-button';
 
 const StyledHeader = styled.header`
-  display: block;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const MainTitle = styled.h1`
@@ -11,41 +15,56 @@ const MainTitle = styled.h1`
   font-family: Montserrat, sans-serif;
 `;
 
-const SubTitle = styled.h3`
-  font-size: 120%;
-  font-family: Montserrat, sans-serif;
+const StyledRightHeaderContent = styled.div`
+  margin-left;
+  display: flex;
 `;
 
-const Header = (props) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const { location, title } = props;
-  let header;
-  if (location.pathname === rootPath) {
-    header = (
+const ResponsiveMenuToggle = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpened: false,
+    };
+    this.handleToggleHeaderOpenCloseClick = this.handleToggleHeaderOpenCloseClick.bind(this);
+  }
+
+  handleToggleHeaderOpenCloseClick() {
+    this.setState(prevState => ({
+      isOpened: !prevState.isOpened,
+    }));
+  }
+
+  render() {
+    const { title } = this.props;
+    const { isOpened } = this.state;
+    return (
       <StyledHeader>
         <MainTitle>
-          <Link
-            to="/"
-          >
+          <Link to="/">
             {title}
           </Link>
         </MainTitle>
-      </StyledHeader>
-    );
-  } else {
-    header = (
-      <StyledHeader>
-        <SubTitle>
-          <Link
-            to="/"
-          >
-            {title}
-          </Link>
-        </SubTitle>
+        <StyledRightHeaderContent>
+          <ResponsiveMenuToggle>
+            <ToggleOpenCloseButton isOpened={isOpened} onToggle={this.handleToggleHeaderOpenCloseClick} />
+          </ResponsiveMenuToggle>
+        </StyledRightHeaderContent>
       </StyledHeader>
     );
   }
-  return header;
+}
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;
