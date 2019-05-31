@@ -1,54 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Reset } from 'styled-reset';
 
 import Header from './header';
 import Footer from './footer';
 
-const StyledHeaderWrapper = styled.header`
-  display: block;
+const StyledContainerWrapper = styled.div`
+  height: 100%
   width: 100%;
-  padding: 0.75rem calc(5% + 0.75rem);
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 1px solid lightgrey;
-`;
 
-const StyledContentWrapper = styled.main`
-  display: block;
-  width: 90%;
-  padding: 1.5rem 0.75rem;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const StyledFooterWrapper = styled.footer`
-  display: block;
-  width: 100%;
-  padding: 0.75rem calc(5% + 0.75rem);
-  margin-left: auto;
-  margin-right: auto;
+  & > * {
+    padding: 0.75rem calc(5% + 0.75rem);
+  }
 `;
 
 const Layout = (props) => {
   const { location, title, children } = props;
   return (
-    <div>
-      <StyledHeaderWrapper>
-        <Header location={location} title={title} />
-      </StyledHeaderWrapper>
-      <StyledContentWrapper>
+    <StyledContainerWrapper>
+      <Header location={location} title={title} />
+      <main>
         {children}
-      </StyledContentWrapper>
-      <StyledFooterWrapper>
-        <Footer />
-      </StyledFooterWrapper>
-    </div>
+      </main>
+      <Footer />
+    </StyledContainerWrapper>
   );
 };
 
 Layout.propTypes = {
-  location: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

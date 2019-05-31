@@ -55,7 +55,7 @@ BlogEntryList.propTypes = {
     PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
-      }).isRequired,
+      }),
     }).isRequired,
   ).isRequired,
 };

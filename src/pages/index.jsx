@@ -39,12 +39,12 @@ BlogIndex.propTypes = {
             title: PropTypes.string.isRequired,
             description: PropTypes.string.isRequired,
             titleImage: PropTypes.string.isRequired,
-          }).isRequired,
+          }),
         }),
       ).isRequired,
     }).isRequired,
   }).isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default BlogIndex;

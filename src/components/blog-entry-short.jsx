@@ -40,7 +40,7 @@ BlogEntryShort.propTypes = {
       title: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      titleImage: PropTypes.string.isRequired,
+      titleImage: PropTypes.object.isRequired,
     }).isRequired,
   }).isRequired,
 };
