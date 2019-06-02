@@ -8,12 +8,12 @@ import Layout from '../components/layout';
 import BlogEntryList from '../components/blog-entry-list';
 
 const BlogIndex = (props) => {
-  const { data, location } = props;
+  const { data } = props;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <Bio />
       <BlogEntryList posts={posts} />
     </Layout>
@@ -44,7 +44,6 @@ BlogIndex.propTypes = {
       ).isRequired,
     }).isRequired,
   }).isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default BlogIndex;

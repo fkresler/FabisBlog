@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Reset } from 'styled-reset';
 
 import Header from './header';
 import Footer from './footer';
@@ -16,10 +15,10 @@ const StyledContainerWrapper = styled.div`
 `;
 
 const Layout = (props) => {
-  const { location, title, children } = props;
+  const { title, children } = props;
   return (
     <StyledContainerWrapper>
-      <Header location={location} title={title} />
+      <Header title={title} />
       <main>
         {children}
       </main>
@@ -29,7 +28,6 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
-  location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
